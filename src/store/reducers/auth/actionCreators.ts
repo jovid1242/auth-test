@@ -6,7 +6,6 @@ import {
     SetAuthAction,
     SetUserAction,
     SetIsLoading,
-    AuthAction,
     SetIsError,
 } from "./types"
 

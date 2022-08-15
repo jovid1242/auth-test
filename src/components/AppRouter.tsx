@@ -39,7 +39,10 @@ const AppRouter = () => {
                         />
                     )
                 })}
-                <Route path="*" element={<Navigate to={RouteName.PROFILE} />} />
+                <Route
+                    path="*"
+                    element={<Navigate to={RouteName.CONTACTS} />}
+                />
             </>
         )
     }
