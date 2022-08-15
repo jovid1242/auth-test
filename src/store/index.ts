@@ -1,5 +1,5 @@
-import { applyMiddleware, combineReducers, createStore } from "redux"
-import thunk from "redux-thunk"
+import { Action, applyMiddleware, combineReducers, createStore } from "redux"
+import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk"
 import reducers from "./reducers"
 
 const rootReducer = combineReducers(reducers)

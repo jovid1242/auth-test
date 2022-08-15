@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 // antd
 import { Col, Layout, Menu, Row, Space } from "antd"
@@ -7,11 +7,12 @@ import { RouteName } from "router"
 
 // hooks
 import { useTypedSelector } from "hooks/useTypedSelector"
+import { useAppDispatch } from "hooks/useAppDispatch"
+import { AuthActionCreators } from "store/reducers/auth/actionCreators"
 
 const Navbar: FC = () => {
+    const dispatch = useAppDispatch()
     const { isAuth } = useTypedSelector((state) => state.auth)
-
-    let location = useLocation()
     const navigate = useNavigate()
 
     return (
@@ -30,7 +31,9 @@ const Navbar: FC = () => {
                             </div>
                             <Menu theme="dark" mode="horizontal">
                                 <Menu.Item
-                                    onClick={() => console.log("logout")}
+                                    onClick={() =>
+                                        AuthActionCreators.logout()(dispatch)
+                                    }
                                     key="1"
                                 >
                                     Выйти
