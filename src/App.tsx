@@ -1,6 +1,14 @@
-import React from "react";
+import React from "react"
+
+// components
+import AppRouter from "components/AppRouter"
+
 function App() {
-  return <div className="App">lll</div>;
+    return (
+        <div>
+            <AppRouter />
+        </div>
+    )
 }
 
-export default App;
+export default App
