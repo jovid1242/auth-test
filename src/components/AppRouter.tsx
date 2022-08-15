@@ -1,32 +1,44 @@
 import React from "react"
 import { Routes, Route, Navigate } from "react-router-dom"
-import { privateRoutes, publicRoutes } from "router"
+import { privateRoutes, publicRoutes, RouteName } from "router"
 
 const AppRouter = () => {
-    const auth = false
+    const isAuth = false
 
-    return (
-        <Routes>
-            {auth
-                ? privateRoutes.map((route) => {
-                      return (
-                          <Route
-                              key={route.path}
-                              path={route.path}
-                              element={<route.element />}
-                          />
-                      )
-                  })
-                : publicRoutes.map((route) => {
-                      return (
-                          <Route
-                              key={route.path}
-                              path={route.path}
-                              element={<route.element />}
-                          />
-                      )
-                  })}
-        </Routes>
-    )
+    const getPublicRoutes = () => {
+        return (
+            <>
+                {publicRoutes.map((route) => {
+                    return (
+                        <Route
+                            path={route.path}
+                            element={<route.element />}
+                            key={route.path}
+                        />
+                    )
+                })}
+                <Route path="*" element={<Navigate to={RouteName.LOGIN} />} />
+            </>
+        )
+    }
+
+    const getPrivateRoutes = () => {
+        return (
+            <>
+                {privateRoutes.map((route) => {
+                    return (
+                        <Route
+                            path={route.path}
+                            element={<route.element />}
+                            key={route.path}
+                        />
+                    )
+                })}
+                <Route path="*" element={<Navigate to={RouteName.PROFILE} />} />
+            </>
+        )
+    }
+
+    return <Routes>{isAuth ? getPrivateRoutes() : getPublicRoutes()}</Routes>
 }
 export default AppRouter
