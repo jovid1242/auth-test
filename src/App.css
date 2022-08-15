@@ -1,11 +1,11 @@
 @import "~antd/dist/antd.css";
 
 .h100 {
-    height: calc(100vh - 64px);
+    height: calc(100vh);
 }
 
 .mh100 {
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh);
 }
 /* ui */
 .btn {
@@ -16,6 +16,14 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover {
     border-color: #e68134 !important;
     color: #e68134 !important;
+}
+.ant-input:focus,
+.ant-input-focused {
+    border-color: #e68134 !important;
+    box-shadow: 0 0 0 2px #e681342e !important;
+}
+.ant-input:hover {
+    border-color: #e68134 !important;
 }
 
 .mb2 {

@@ -26,15 +26,19 @@ export default function contactReduser(
 ): ContactState {
     switch (action.type) {
         case ContactActions.ADD_CONTACT:
-            return { ...state, users: [action.payload] }
+            return { ...state, users: [...state.users, action.payload] }
         case ContactActions.EDIT_CONTACT:
-            return { ...state, users: [action.payload] }
+            return {
+                ...state,
+                users: state.users.map((user) =>
+                    user.key === action.payload.key ? action.payload : user
+                ),
+            }
         case ContactActions.DELETE_CONTACT:
-            const index = state.users.findIndex(
-                ({ key }) => key === action.payload
-            )
-            state.users.splice(index, 1)
-            return { ...state }
+            return {
+                ...state,
+                users: state.users.filter(({ key }) => key !== action.payload),
+            }
         default:
             return state
     }

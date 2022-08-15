@@ -23,13 +23,13 @@ const Navbar: FC = () => {
                 <Row>
                     <Col span={22}>
                         <div className="logo">
-                            <div className="text-yellow">Logo</div>
+                            <span className="text-yellow">Logo</span>
                         </div>
                     </Col>
                     <Col span={2}>
                         {isAuth ? (
                             <Space>
-                                <div className="" style={{ color: "#fff" }}>
+                                <div className="text-yellow">
                                     {user.username}
                                 </div>
                                 <Menu theme="light" mode="horizontal">

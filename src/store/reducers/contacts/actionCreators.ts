@@ -11,8 +11,8 @@ export const ContactActionCreators = {
         type: ContactActions.EDIT_CONTACT,
         payload: user,
     }),
-    removeContact: (id: string): DeleteContact => ({
+    removeContact: (key: string): DeleteContact => ({
         type: ContactActions.DELETE_CONTACT,
-        payload: id,
+        payload: key,
     }),
 }

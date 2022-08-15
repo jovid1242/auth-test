@@ -1,15 +1,15 @@
 import React, { FC } from "react"
 
 // antd
-import { Button, Space, Table, Tag } from "antd"
+import { Space, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 
 // hooks
-import { useAppDispatch } from "hooks/useAppDispatch"
 import { useTypedSelector } from "hooks/useTypedSelector"
 
-// icons
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons"
+// components
+import EditContact from "./EditContact"
+import RemoveContact from "./RemoveContact"
 
 interface DataType {
     key: string
@@ -20,37 +20,35 @@ interface DataType {
 const ContactTable: FC = () => {
     const { users } = useTypedSelector((state) => state.contacts)
 
-    console.log("users", users)
-
     const columns: ColumnsType<DataType> = [
         {
-            title: "Name",
+            title: "Имя",
             dataIndex: "name",
             key: "name",
-            render: (text) => <a>{text}</a>,
+            render: (text) => <p className="text-yellow">{text}</p>,
         },
         {
-            title: "Address",
+            title: "Адресс",
             dataIndex: "address",
             key: "address",
         },
         {
-            title: "Action",
+            title: "Действия",
             key: "action",
             render: (_, record) => (
                 <Space size="middle">
-                    <Button type="primary" ghost>
-                        <EditOutlined />
-                    </Button>
-                    <Button type="primary" danger ghost>
-                        <DeleteOutlined />
-                    </Button>
+                    <EditContact user={record} />
+                    <RemoveContact user={record} />
                 </Space>
             ),
         },
     ]
 
-    return <Table columns={columns} pagination={false} dataSource={users} />
+    return (
+        <>
+            <Table columns={columns} pagination={false} dataSource={users} />
+        </>
+    )
 }
 
 export default ContactTable
