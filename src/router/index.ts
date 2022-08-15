@@ -2,7 +2,7 @@ import React from "react"
 
 // components
 import Login from "pages/Login"
-import Profile from "pages/Profile"
+import Contacts from "pages/Contacts"
 
 // type rout
 export interface IRoute {
@@ -13,7 +13,7 @@ export interface IRoute {
 
 export enum RouteName {
     LOGIN = "/login",
-    PROFILE = "/profile",
+    CONTACTS = "/contacts",
 }
 
 export const publicRoutes: IRoute[] = [
@@ -26,8 +26,8 @@ export const publicRoutes: IRoute[] = [
 
 export const privateRoutes: IRoute[] = [
     {
-        path: RouteName.PROFILE,
+        path: RouteName.CONTACTS,
         exact: true,
-        element: Profile,
+        element: Contacts,
     },
 ]

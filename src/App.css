@@ -1,5 +1,39 @@
 @import "~antd/dist/antd.css";
 
 .h100 {
-    height: 100vh;
+    height: calc(100vh - 64px);
+}
+/* ui */
+.ant-btn-background-ghost.ant-btn-primary {
+    border-color: #e68134 !important;
+    color: #e68134 !important;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover {
+    border-color: #e68134 !important;
+    color: #e68134 !important;
+}
+
+.mb2 {
+    margin-bottom: 8px !important;
+}
+
+.mb4 {
+    margin-bottom: 16px !important;
+}
+
+.text-yellow {
+    color: #e68134 !important;
+}
+
+/* and ui */
+
+.logo {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+h2 {
+    margin: 0 !important;
 }

@@ -32,7 +32,9 @@ const LoginForm: FC = () => {
                     <Text type="danger">{isError}</Text>
                 </div>
             )}
-            <Title level={2}>Авторизация</Title>
+            <Title level={2} className="text-yellow mb2">
+                Авторизация
+            </Title>
             <Form
                 initialValues={{ remember: true }}
                 onFinish={submitForm}
@@ -59,8 +61,9 @@ const LoginForm: FC = () => {
                         type="primary"
                         htmlType="submit"
                         loading={isLoading}
+                        ghost
                     >
-                        Submit
+                        Войти
                     </Button>
                 </Form.Item>
             </Form>
