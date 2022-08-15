@@ -3,8 +3,12 @@
 .h100 {
     height: calc(100vh - 64px);
 }
+
+.mh100 {
+    min-height: calc(100vh - 64px);
+}
 /* ui */
-.ant-btn-background-ghost.ant-btn-primary {
+.btn {
     border-color: #e68134 !important;
     color: #e68134 !important;
 }

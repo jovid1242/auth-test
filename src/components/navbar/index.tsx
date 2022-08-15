@@ -37,6 +37,7 @@ const Navbar: FC = () => {
                                         <Button
                                             type="primary"
                                             onClick={() => logout()}
+                                            className="btn"
                                             ghost
                                         >
                                             Выйти
@@ -59,6 +60,7 @@ const Navbar: FC = () => {
                                     >
                                         <Button
                                             type="primary"
+                                            className="btn"
                                             onClick={() => logout()}
                                             ghost
                                         >

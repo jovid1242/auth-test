@@ -61,6 +61,7 @@ const LoginForm: FC = () => {
                         type="primary"
                         htmlType="submit"
                         loading={isLoading}
+                        className="btn"
                         ghost
                     >
                         Войти
