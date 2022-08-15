@@ -8,11 +8,10 @@ import { RouteName } from "router"
 // hooks
 import { useTypedSelector } from "hooks/useTypedSelector"
 import { useAppDispatch } from "hooks/useAppDispatch"
-import { AuthActionCreators } from "store/reducers/auth/actionCreators"
 
 const Navbar: FC = () => {
-    const dispatch = useAppDispatch()
-    const { isAuth } = useTypedSelector((state) => state.auth)
+    const { logout } = useAppDispatch()
+    const { isAuth, user } = useTypedSelector((state) => state.auth)
     const navigate = useNavigate()
 
     return (
@@ -27,15 +26,10 @@ const Navbar: FC = () => {
                     {isAuth ? (
                         <Space>
                             <div className="" style={{ color: "#fff" }}>
-                                Jovid
+                                {user.username}
                             </div>
                             <Menu theme="dark" mode="horizontal">
-                                <Menu.Item
-                                    onClick={() =>
-                                        AuthActionCreators.logout()(dispatch)
-                                    }
-                                    key="1"
-                                >
+                                <Menu.Item onClick={() => logout()} key="1">
                                     Выйти
                                 </Menu.Item>
                             </Menu>

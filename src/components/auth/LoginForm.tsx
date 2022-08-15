@@ -2,7 +2,6 @@ import React, { FC } from "react"
 
 // antd
 import { Button, Form, Input, Typography } from "antd"
-import { AuthActionCreators } from "store/reducers/auth/actionCreators"
 
 // hooks
 import { useAppDispatch } from "hooks/useAppDispatch"
@@ -14,11 +13,11 @@ import "styles/auth/loginForm.scss"
 const { Text, Title } = Typography
 
 const LoginForm: FC = () => {
-    const dispatch = useAppDispatch()
+    const { login } = useAppDispatch()
     const { isError, isLoading } = useTypedSelector((state) => state.auth)
 
     const submitForm = (values: any) => {
-        AuthActionCreators.login(values.username, values.password)(dispatch)
+        login(values.username, values.password)
     }
 
     const rules = (message: string) => ({
