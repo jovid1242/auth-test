@@ -71,7 +71,7 @@ const EditContact: FC<EditContactProps> = ({ user }) => {
                 <Form
                     name="basic"
                     onFinish={submitForm}
-                    initialValues={users.find((user) => user === user)}
+                    initialValues={users.find((el) => el === user)}
                     autoComplete="off"
                 >
                     <Form.Item
