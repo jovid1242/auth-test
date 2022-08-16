@@ -49,3 +49,10 @@ For _npm_:
 ```sh
 npm run start
 ```
+
+
+Node version:
+
+```sh
+v16.13.0
+```
