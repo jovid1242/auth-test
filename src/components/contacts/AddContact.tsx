@@ -6,11 +6,19 @@ import { Button, Form, Input } from "antd"
 // hooks
 import { useAppDispatch } from "hooks/useAppDispatch"
 
+// utils
+import { rules } from "utils/rules"
+
+interface InputValue {
+    name: string
+    address: string
+}
+
 const AddContact = () => {
     const [confirmLoading, setConfirmLoading] = useState(false)
     const { setContact } = useAppDispatch()
 
-    const onFinish = (values: any) => {
+    const submitForm = (values: InputValue) => {
         setConfirmLoading(true)
         setTimeout(() => {
             setContact({
@@ -22,23 +30,18 @@ const AddContact = () => {
         }, 1000)
     }
 
-    const rules = (message: string) => ({
-        required: true,
-        message,
-    })
-
     return (
-        <Form name="basic" onFinish={onFinish} autoComplete="off">
+        <Form name="basic" onFinish={submitForm} autoComplete="off">
             <Form.Item
                 name="name"
-                rules={[rules("Пожалуйста, заполните поля имя")]}
+                rules={[rules.required("Пожалуйста, заполните поля имя")]}
             >
                 <Input placeholder="Имя" />
             </Form.Item>
 
             <Form.Item
                 name="address"
-                rules={[rules("Пожалуйста, заполните поля адресс")]}
+                rules={[rules.required("Пожалуйста, заполните поля адресс")]}
             >
                 <Input placeholder="Адресс" />
             </Form.Item>

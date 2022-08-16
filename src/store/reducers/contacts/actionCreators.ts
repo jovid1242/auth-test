@@ -1,4 +1,4 @@
-// types , models
+// types & models
 import { IContact } from "models/contact"
 import { ContactActions, AddContact, DeleteContact, EditContact } from "./types"
 

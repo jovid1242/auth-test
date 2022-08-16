@@ -14,10 +14,12 @@ export interface AddContact {
     type: ContactActions.ADD_CONTACT
     payload: IContact
 }
+
 export interface EditContact {
     type: ContactActions.EDIT_CONTACT
     payload: IContact
 }
+
 export interface DeleteContact {
     type: ContactActions.DELETE_CONTACT
     payload: string

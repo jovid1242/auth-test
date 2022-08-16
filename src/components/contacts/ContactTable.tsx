@@ -4,12 +4,11 @@ import React, { FC } from "react"
 import { Space, Table } from "antd"
 import type { ColumnsType } from "antd/es/table"
 
-// hooks
-import { useTypedSelector } from "hooks/useTypedSelector"
-
 // components
 import EditContact from "./EditContact"
 import RemoveContact from "./RemoveContact"
+
+// models
 import { IContact } from "models/contact"
 
 interface DataType {

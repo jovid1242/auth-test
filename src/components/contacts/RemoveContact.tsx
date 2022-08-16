@@ -1,18 +1,25 @@
-import React, { useState } from "react"
-
-// components
-import ModalAction from "components/modal"
+import React, { FC, useState } from "react"
 
 // antd
 import { Button, Avatar, Card } from "antd"
+
+// components
+import ModalAction from "components/modal"
 
 // icons
 import { DeleteOutlined } from "@ant-design/icons"
 import { useAppDispatch } from "hooks/useAppDispatch"
 
+// models
+import { IContact } from "models/contact"
+
+interface RemoveContactProps {
+    user: IContact
+}
+
 const { Meta } = Card
 
-const RemoveContact = ({ user }: any) => {
+const RemoveContact: FC<RemoveContactProps> = ({ user }) => {
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [visible, setVisible] = useState(false)
 
