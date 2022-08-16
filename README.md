@@ -13,6 +13,13 @@ Project uses a number of open source projects to work properly:
 -   [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
 -   [Scss](https://sass-scss.ru/) - Scss
 
+# Login details:
+
+```sh
+"username": "jovid",
+"password": "123456",
+```
+
 # How to:
 
 ### _install_
