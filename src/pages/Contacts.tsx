@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 
 // antd
 import { Card, Col, Layout, Row, Typography } from "antd"
@@ -9,10 +9,29 @@ import AddContact from "components/contacts/AddContact"
 
 // styles
 import "styles/contacts/contact.scss"
+import SearchContact from "components/contacts/SearchContact"
 
-const { Text, Title } = Typography
+// hooks
+import { useTypedSelector } from "hooks/useTypedSelector"
+import { IContact } from "models/contact"
+
+const { Title } = Typography
 
 const Profile: FC = () => {
+    const { users } = useTypedSelector((state) => state.contacts)
+    const [data, setData] = useState<IContact[]>(users)
+
+    const filterUsers = (name: string) => {
+        const filtered = users.filter((user) => {
+            if (name === "") {
+                return user
+            } else if (user.name?.toLowerCase().includes(name.toLowerCase())) {
+                return user
+            }
+        })
+        setData(filtered)
+    }
+
     return (
         <Layout>
             <div className="contact mh100">
@@ -21,14 +40,17 @@ const Profile: FC = () => {
                         <Col span={6}>
                             <Card className="left-bar">
                                 <Title level={4} className="text-yellow mb4">
-                                    Добавить адрес пользователя
+                                    Добавить пользователя
                                 </Title>
                                 <AddContact />
                             </Card>
                         </Col>
                         <Col span={18}>
                             <Card className="right-bar">
-                                <ContactTable />
+                                <div className="mb4">
+                                    <SearchContact filter={filterUsers} />
+                                </div>
+                                <ContactTable users={data} />
                             </Card>
                         </Col>
                     </Row>

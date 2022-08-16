@@ -84,7 +84,7 @@ const EditContact = ({ user }: any) => {
                             loading={confirmLoading}
                             ghost
                         >
-                            Добавить
+                            Изменить
                         </Button>
                     </Form.Item>
                 </Form>
