@@ -10,6 +10,7 @@ import { useTypedSelector } from "hooks/useTypedSelector"
 // components
 import EditContact from "./EditContact"
 import RemoveContact from "./RemoveContact"
+import { IContact } from "models/contact"
 
 interface DataType {
     key: string
@@ -17,9 +18,11 @@ interface DataType {
     address: string
 }
 
-const ContactTable: FC = () => {
-    const { users } = useTypedSelector((state) => state.contacts)
+interface ContactTableProps {
+    users: IContact[]
+}
 
+const ContactTable: FC<ContactTableProps> = ({ users }) => {
     const columns: ColumnsType<DataType> = [
         {
             title: "Имя",

@@ -18,12 +18,17 @@
     color: #e68134 !important;
 }
 .ant-input:focus,
-.ant-input-focused {
+.ant-input-focused,
+.ant-input-affix-wrapper-focused {
     border-color: #e68134 !important;
     box-shadow: 0 0 0 2px #e681342e !important;
 }
+
 .ant-input:hover {
     border-color: #e68134 !important;
+}
+.user-icon svg path {
+    fill: #e68134 !important;
 }
 
 .mb2 {
@@ -36,6 +41,10 @@
 
 .text-yellow {
     color: #e68134 !important;
+}
+
+.w100 {
+    width: 100% !important;
 }
 
 /* and ui */
