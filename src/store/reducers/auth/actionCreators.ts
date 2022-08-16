@@ -1,5 +1,6 @@
 import axios from "axios"
-// types , models
+
+// types & models
 import { IUser } from "models/auth"
 import {
     AuthActions,

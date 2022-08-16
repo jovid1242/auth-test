@@ -7,8 +7,16 @@ import { Button, Form, Input, Typography } from "antd"
 import { useAppDispatch } from "hooks/useAppDispatch"
 import { useTypedSelector } from "hooks/useTypedSelector"
 
+// utils
+import { rules } from "utils/rules"
+
 // style
 import "styles/auth/loginForm.scss"
+
+interface InputValue {
+    username: string
+    password: string
+}
 
 const { Text, Title } = Typography
 
@@ -16,14 +24,9 @@ const LoginForm: FC = () => {
     const { login } = useAppDispatch()
     const { isError, isLoading } = useTypedSelector((state) => state.auth)
 
-    const submitForm = (values: any) => {
+    const submitForm = (values: InputValue) => {
         login(values.username, values.password)
     }
-
-    const rules = (message: string) => ({
-        required: true,
-        message,
-    })
 
     return (
         <div className="form-wrapper">
@@ -43,7 +46,9 @@ const LoginForm: FC = () => {
                 <Form.Item
                     name="username"
                     rules={[
-                        rules("Пожалуйста, введите ваше имя пользователя!"),
+                        rules.required(
+                            "Пожалуйста, введите ваше имя пользователя!"
+                        ),
                     ]}
                 >
                     <Input placeholder="Имя ползователья" />
@@ -51,7 +56,7 @@ const LoginForm: FC = () => {
 
                 <Form.Item
                     name="password"
-                    rules={[rules("Пожалуйста, введите ваш пароль!")]}
+                    rules={[rules.required("Пожалуйста, введите ваш пароль!")]}
                 >
                     <Input.Password placeholder="Пароль" />
                 </Form.Item>

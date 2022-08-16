@@ -4,8 +4,8 @@ const initialState: ContactState = {
     users: [
         {
             key: "1",
-            name: "John Brown",
-            address: "New York No. 1 Lake Park",
+            name: "Jovid Developer",
+            address: "ksdmcskdc",
         },
         {
             key: "2",

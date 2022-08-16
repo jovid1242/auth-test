@@ -1,19 +1,34 @@
-import React, { useState } from "react"
-
-// components
-import ModalAction from "components/modal"
+import React, { FC, useState } from "react"
 
 // antd
 import { Button, Form, Input } from "antd"
-
-// icons
-import { EditOutlined } from "@ant-design/icons"
 
 // hooks
 import { useAppDispatch } from "hooks/useAppDispatch"
 import { useTypedSelector } from "hooks/useTypedSelector"
 
-const EditContact = ({ user }: any) => {
+// models
+import { IContact } from "models/contact"
+
+// utils
+import { rules } from "utils/rules"
+
+// components
+import ModalAction from "components/modal"
+
+// icons
+import { EditOutlined } from "@ant-design/icons"
+
+interface InputValue {
+    name: string
+    address: string
+}
+
+interface EditContactProps {
+    user: IContact
+}
+
+const EditContact: FC<EditContactProps> = ({ user }) => {
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [visible, setVisible] = useState(false)
 
@@ -28,7 +43,7 @@ const EditContact = ({ user }: any) => {
         setVisible(false)
     }
 
-    const submitForm = (values: any) => {
+    const submitForm = (values: InputValue) => {
         setConfirmLoading(true)
         setTimeout(() => {
             editContact({
@@ -41,10 +56,6 @@ const EditContact = ({ user }: any) => {
         }, 2000)
     }
 
-    const rules = (message: string) => ({
-        required: true,
-        message,
-    })
     return (
         <>
             <Button type="primary" onClick={() => showModal()} ghost>
@@ -65,14 +76,18 @@ const EditContact = ({ user }: any) => {
                 >
                     <Form.Item
                         name="name"
-                        rules={[rules("Пожалуйста, заполните поля имя")]}
+                        rules={[
+                            rules.required("Пожалуйста, заполните поля имя"),
+                        ]}
                     >
                         <Input placeholder="Имя" />
                     </Form.Item>
 
                     <Form.Item
                         name="address"
-                        rules={[rules("Пожалуйста, заполните поля адресс")]}
+                        rules={[
+                            rules.required("Пожалуйста, заполните поля адресс"),
+                        ]}
                     >
                         <Input placeholder="Адресс" />
                     </Form.Item>
