@@ -33,7 +33,7 @@ const EditContact: FC<EditContactProps> = ({ user }) => {
     const [visible, setVisible] = useState(false)
 
     const { users } = useTypedSelector((state) => state.contacts)
-    const { editContact } = useAppDispatch()
+    const { editContactAsync } = useAppDispatch()
 
     const showModal = () => {
         setVisible(true)
@@ -46,7 +46,7 @@ const EditContact: FC<EditContactProps> = ({ user }) => {
     const submitForm = (values: InputValue) => {
         setConfirmLoading(true)
         setTimeout(() => {
-            editContact({
+            editContactAsync({
                 key: user.key,
                 name: values.name,
                 address: values.address,

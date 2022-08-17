@@ -5,16 +5,14 @@ import { Form, Input } from "antd"
 
 // icons
 import { UserOutlined } from "@ant-design/icons"
+import { useAppDispatch } from "hooks/useAppDispatch"
 
-interface SearchContact {
-    filter: (name: string) => void
-}
-
-const SearchContact: FC<SearchContact> = ({ filter }) => {
+const SearchContact: FC = () => {
+    const { setIsSearch } = useAppDispatch()
     const [search, setSearch] = useState("")
 
     useEffect(() => {
-        filter(search)
+        setIsSearch(search)
     }, [search])
 
     return (

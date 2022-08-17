@@ -2,7 +2,6 @@ import React, { FC } from "react"
 
 // antd
 import { Space, Table } from "antd"
-import type { ColumnsType } from "antd/es/table"
 
 // components
 import EditContact from "./EditContact"
@@ -10,6 +9,7 @@ import RemoveContact from "./RemoveContact"
 
 // models
 import { IContact } from "models/contact"
+import type { ColumnsType } from "antd/es/table"
 
 interface DataType {
     key: string
@@ -18,10 +18,10 @@ interface DataType {
 }
 
 interface ContactTableProps {
-    users: IContact[]
+    data: IContact[]
 }
 
-const ContactTable: FC<ContactTableProps> = ({ users }) => {
+const ContactTable: FC<ContactTableProps> = ({ data }) => {
     const columns: ColumnsType<DataType> = [
         {
             title: "Имя",
@@ -48,7 +48,7 @@ const ContactTable: FC<ContactTableProps> = ({ users }) => {
 
     return (
         <>
-            <Table columns={columns} pagination={false} dataSource={users} />
+            <Table columns={columns} pagination={false} dataSource={data} />
         </>
     )
 }

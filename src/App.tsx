@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useMemo } from "react"
 
 // antd
 import { Layout } from "antd"
@@ -18,13 +18,18 @@ import "./App.css"
 
 function App() {
     const { setUser, setIsAuth } = useAppDispatch()
-    useEffect(() => {
+
+    const checkAuth = () => {
         if (localStorage.getItem("auth")) {
             setUser({
                 username: localStorage.getItem("username" || ""),
             } as IUser)
             setIsAuth(true)
         }
+    }
+
+    useMemo(() => {
+        checkAuth()
     }, [])
 
     return (

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 // antd
 import { Button, Form, Input } from "antd"
@@ -8,7 +8,6 @@ import { useAppDispatch } from "hooks/useAppDispatch"
 
 // utils
 import { rules } from "utils/rules"
-import { useTypedSelector } from "hooks/useTypedSelector"
 
 interface InputValue {
     name: string
@@ -16,15 +15,19 @@ interface InputValue {
 }
 
 const AddContact = () => {
+    const [confirmLoading, setConfirmLoading] = useState(false)
     const { addContactAsync } = useAppDispatch()
-    const { isLoading } = useTypedSelector((state) => state.contacts)
 
     const submitForm = (values: InputValue) => {
-        addContactAsync({
-            key: new Date().getSeconds() + "",
-            name: values.name,
-            address: values.address,
-        })
+        setConfirmLoading(true)
+        setTimeout(() => {
+            addContactAsync({
+                key: new Date().getSeconds() + "",
+                name: values.name,
+                address: values.address,
+            })
+            setConfirmLoading(false)
+        }, 1000)
     }
 
     return (
@@ -48,7 +51,7 @@ const AddContact = () => {
                     type="primary"
                     htmlType="submit"
                     className="btn"
-                    loading={isLoading}
+                    loading={confirmLoading}
                     ghost
                 >
                     Добавить

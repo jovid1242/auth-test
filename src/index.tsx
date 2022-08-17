@@ -4,11 +4,11 @@ import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 
 // components
-import App from "./App"
+import App from "App"
 import reportWebVitals from "./reportWebVitals"
 
 // store
-import { store } from "./store"
+import { store } from "store"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(

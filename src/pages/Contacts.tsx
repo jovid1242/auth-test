@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from "react"
+import React, { FC, useMemo } from "react"
 
 // antd
 import { Card, Col, Layout, Row, Typography } from "antd"
@@ -15,32 +15,22 @@ import SearchContact from "components/contacts/SearchContact"
 import { useTypedSelector } from "hooks/useTypedSelector"
 import { useAppDispatch } from "hooks/useAppDispatch"
 
-// models
-import { IContact } from "models/contact"
-
 const { Title } = Typography
 
 const Profile: FC = () => {
-    const { users } = useTypedSelector((state) => state.contacts)
+    const { users, search } = useTypedSelector((state) => state.contacts)
     const { getContact } = useAppDispatch()
-    const [data, setData] = useState<IContact[]>(users)
 
-    const filterUsers = (name: string) => {
-        const filtered = users.filter((user) => {
-            if (name === "") {
-                return user
-            } else if (user.name?.toLowerCase().includes(name.toLowerCase())) {
-                return user
+    const filteredUsers = () => {
+        return users.filter((user) => {
+            if (user.name.toLowerCase().includes(search.toLowerCase())) {
+                return true
             }
+            return false
         })
-        setData(filtered)
     }
 
-    // useEffect(() => {
-    //     setData(users)
-    // }, [users])
-
-    useEffect(() => {
+    useMemo(() => {
         getContact()
     }, [])
 
@@ -60,9 +50,9 @@ const Profile: FC = () => {
                         <Col span={18}>
                             <Card className="right-bar">
                                 <div className="mb4">
-                                    <SearchContact filter={filterUsers} />
+                                    <SearchContact />
                                 </div>
-                                <ContactTable users={data} />
+                                <ContactTable data={filteredUsers()} />
                             </Card>
                         </Col>
                     </Row>
