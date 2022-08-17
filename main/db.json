@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "test 2002"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

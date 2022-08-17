@@ -1,23 +1,9 @@
 import { ContactAction, ContactActions, ContactState } from "./types"
 
 const initialState: ContactState = {
-    users: [
-        {
-            key: "1",
-            name: "Jovid Developer",
-            address: "ksdmcskdc",
-        },
-        {
-            key: "2",
-            name: "Jim Green",
-            address: "London No. 1 Lake Park",
-        },
-        {
-            key: "3",
-            name: "Joe Black",
-            address: "Sidney No. 1 Lake Park",
-        },
-    ],
+    users: [],
+    isLoading: false,
+    isError: "",
 }
 
 export default function contactReduser(
@@ -26,7 +12,11 @@ export default function contactReduser(
 ): ContactState {
     switch (action.type) {
         case ContactActions.ADD_CONTACT:
-            return { ...state, users: [...state.users, action.payload] }
+            return {
+                ...state,
+                users: [...state.users, action.payload],
+                isLoading: false,
+            }
         case ContactActions.EDIT_CONTACT:
             return {
                 ...state,
@@ -38,7 +28,12 @@ export default function contactReduser(
             return {
                 ...state,
                 users: state.users.filter(({ key }) => key !== action.payload),
+                isLoading: false,
             }
+        case ContactActions.SET_IS_LOADING_C:
+            return { ...state, isLoading: action.payload }
+        case ContactActions.SET_IS_ERROR:
+            return { ...state, isError: action.payload, isLoading: false }
         default:
             return state
     }

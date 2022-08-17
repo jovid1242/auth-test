@@ -23,7 +23,7 @@ const RemoveContact: FC<RemoveContactProps> = ({ user }) => {
     const [confirmLoading, setConfirmLoading] = useState(false)
     const [visible, setVisible] = useState(false)
 
-    const { removeContact } = useAppDispatch()
+    const { removeContactAsync } = useAppDispatch()
 
     const showModal = () => {
         setVisible(true)
@@ -38,7 +38,7 @@ const RemoveContact: FC<RemoveContactProps> = ({ user }) => {
         setTimeout(() => {
             setVisible(false)
             setConfirmLoading(false)
-            removeContact(user.key)
+            removeContactAsync(user.key)
         }, 1000)
     }
     return (

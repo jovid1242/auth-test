@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, useEffect, useMemo, useState } from "react"
 
 // antd
 import { Card, Col, Layout, Row, Typography } from "antd"
@@ -13,6 +13,7 @@ import SearchContact from "components/contacts/SearchContact"
 
 // hooks
 import { useTypedSelector } from "hooks/useTypedSelector"
+import { useAppDispatch } from "hooks/useAppDispatch"
 
 // models
 import { IContact } from "models/contact"
@@ -21,6 +22,7 @@ const { Title } = Typography
 
 const Profile: FC = () => {
     const { users } = useTypedSelector((state) => state.contacts)
+    const { getContact } = useAppDispatch()
     const [data, setData] = useState<IContact[]>(users)
 
     const filterUsers = (name: string) => {
@@ -34,9 +36,13 @@ const Profile: FC = () => {
         setData(filtered)
     }
 
+    // useEffect(() => {
+    //     setData(users)
+    // }, [users])
+
     useEffect(() => {
-        setData(users)
-    }, [users])
+        getContact()
+    }, [])
 
     return (
         <Layout>
